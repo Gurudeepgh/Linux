@@ -1,6 +1,9 @@
 ## Kernel
 The kernel is a fundamental component of an operating system (OS). It is a software program that acts as the core of the OS, directly interacting with the hardware and managing various system resources. The primary purpose of the kernel is to enable communication between software (applications) and hardware components, ensuring that the computer's resources are utilized efficiently and securely.
 
+<img width="874" alt="image" src="https://github.com/kmitsolution/Linux/assets/84008107/f0e9bcfb-785e-4ff3-b445-638575830342">
+
+
 Key functions of the kernel include:
 
 ### Process Management:
