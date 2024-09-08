@@ -1,19 +1,41 @@
-Managing file systems and partitions is a crucial aspect of system administration in Linux. It involves creating, resizing, mounting, and managing disk partitions and file systems. Here’s a detailed guide to these tasks:
+### Disk Management 
+Disk management involves various tasks related to handling disk storage on a Linux system. It includes:
 
-### **1. Understanding Partitions and File Systems**
+- **Partitioning:** Dividing a disk into partitions.
+- **Formatting:** Creating file systems on partitions.
+- **Mounting:** Attaching file systems to directories.
+- **Monitoring:** Checking disk space and usage.
+- **Repairing:** Fixing file system errors.
 
-- **Partitions:** A partition is a section of a disk that acts as a separate logical unit. Each partition can have its own file system. Partitions are created during the disk setup process and are necessary for organizing data.
+- 
+### File System
 
-- **File Systems:** A file system is a way of organizing and storing files on a partition. Common Linux file systems include ext4, xfs, btrfs, and ntfs.
+A file system organizes and manages files on a disk. Common file systems in Linux include:
 
-### **2. Viewing Disk and Partition Information**
+- **Ext4:** The default file system for many Linux distributions.
+- **XFS:** Known for high performance and scalability.
+- **NTFS:** Used by Windows.
+- **FAT32:** Commonly used for compatibility with various operating systems.
 
-- **List Disk Partitions:**
+
+### Partition of Hard Disk
+
+Partitions are sections of a disk. They can be:
+
+- **Primary Partition:** A primary partition can hold an operating system and can be bootable. A disk can have up to four primary partitions.
+- **Extended Partition:** An extended partition acts as a container for logical partitions and allows for more than four partitions on a disk.
+- **Logical Volume:** Partitions within an extended partition. They can be resized easily compared to primary partitions.
+
+### Viewing Disk and Partition Information**
+
+- **List Disk Partitions with fdisk:**
   To list all partitions on your system, use:
   ```bash
   sudo fdisk -l
   ```
   The `fdisk -l` command lists all available disks and their partitions on a Linux system. It provides detailed information about the disk layout and partitioning scheme. Here’s an explanation of the typical output you might see when running `sudo fdisk -l`:
+
+![image](https://github.com/user-attachments/assets/b1d8a0ab-b067-4176-b467-d7f6717c784a)
 
 ### **Example Output of `sudo fdisk -l`**
 
@@ -55,16 +77,8 @@ Device         Start       End   Sectors   Size Type
      - **`EFI System:`**: A partition used for UEFI (Unified Extensible Firmware Interface) systems, typically used for booting.
      - **`Linux filesystem:`**: A partition formatted with a Linux file system (e.g., ext4, xfs).
 
-### **Summary**
 
-- **Disk Information:**
-  - Displays overall details about the disk, including size, sector size, and partitioning scheme (GPT or MBR).
-
-- **Partition Table:**
-  - Lists all partitions on the disk, showing their sizes, types, and sector ranges.
-
-Understanding this output helps you manage disks and partitions effectively, ensuring proper allocation of storage and compatibility with various file systems and boot configurations.
-  or
+- **List Disk Partitions with lsblk:**
   ```bash
   lsblk
   ```
@@ -122,17 +136,10 @@ sda    8:0    0  100G  0 disk
 - **`[SWAP]`** indicates the second partition is used for swap space.
 - **`/rhel/home`** is the mount point for the third partition, which is used for user data.
 
-This information helps you understand the disk layout and how partitions are used on your system.
-
-- **View File System Type:**
-  To see the type of file system on a partition, use:
-  ```bash
-  df -T
-  ```
 
 ### **3. Creating and Managing Partitions**
 
-- **Using `fdisk` for MBR Partitions:**
+- **Using `fdisk` for MBR(4 Primary Partitions) Partitions:**
 
   1. **Open `fdisk` with the disk you want to partition:**
      ```bash
